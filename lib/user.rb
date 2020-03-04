@@ -15,5 +15,11 @@ class User < ActiveRecord::Base
     self.find_name.update(mood:mood)
     end 
 
+    def self.all_users
+        num = 1
+        self.all.each  {|user|puts "#{num}.#{user.name}"; num +=1; }
+     
+    end 
+
     
 end 
