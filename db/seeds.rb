@@ -48,6 +48,8 @@ MovieMood.create(movie_id:the_man_from_earth.id, mood_id:cheerful.id)
 MovieMood.create(movie_id:airport.id, mood_id:lonely.id)
 MovieMood.create(movie_id:airport.id, mood_id:angry.id)
 MovieMood.create(movie_id:airport.id, mood_id:gloomy.id)
+MovieMood.create(movie_id:bernie.id, mood_id:gloomy.id)
+
 
 
 

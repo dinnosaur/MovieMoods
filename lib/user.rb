@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
         self.all.find_by(name:name)
    end 
    
-   def update(mood)
-    self.find_name.update(mood:mood)
-    end 
+#    def update(mood)
+#     self.find_name.update(mood:mood)
+#     end 
 
     def self.all_users
         num = 1
@@ -21,5 +21,8 @@ class User < ActiveRecord::Base
      
     end 
 
+    
+
+   
     
 end 
