@@ -8,3 +8,9 @@ task :console do
 end
 
 
+desc 'reset user'
+task :resetuser do
+  ActiveRecord::Base.establish_connection.execute("TRUNCATE users")
+end
+
+
