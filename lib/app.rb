@@ -5,7 +5,16 @@ class App
     def greet
         puts "\n                      Welcome to Movie Moods\n"
         puts "\nAre you a existing user (Y/N) ?"
-        end 
+    end 
+
+    def options 
+        puts "\n           Please enter a number "
+        puts "1. Show movie suggestions based on your mood"
+        puts "2. Change you current mood"
+        puts "3. Delete your profile and exit"
+        puts "4. Exit"
+        puts "5. See your current favourites"
+    end 
         
     def create_user 
             puts "What is your Name\n"
@@ -43,7 +52,32 @@ class App
                     puts "Please Enter Y or N"
                 
                 end
-                end 
+            end 
+    end 
+
+    def main_menu
+        exit_val = 0 
+        while exit_val == 0 do 
+            
+      options
+      num= gets.chomp.to_i
+       option = val_main_menu(num)
+       if option == 1
+       random_movies
+      
+        elsif option == 2
+        set_mood
+        @current_user.update_attribute(:mood, @current_mood)
+        elsif option == 3
+        delete_user
+        exit_val = 1
+        elsif option == 4
+        exit_val = 1
+        else
+        puts "please select a valid number"
+            end
+
+        end 
     end 
         
         
@@ -91,7 +125,7 @@ class App
      end 
 
      def val_main_menu(num)
-        while num <= 0 || num > 3 do 
+        while num <= 0 || num > 4 do 
             puts "Please enter a valid number"
                 num= gets.chomp.to_i 
          end 
@@ -102,33 +136,6 @@ class App
 
      
 
-
-    def main_menu
-        exit_val = 0 
-        while exit_val == 0 do 
-            exit_val = 0 
-        puts "           Please enter a number "
-        puts "1. Show movie suggestions based on your mood"
-        puts "2. Change you current mood"
-        puts "3. Delete your profile"
-      num= gets.chomp.to_i
-       option = val_main_menu(num)
-       if option == 1
-       random_movies
-       exit_val = 1
-        elsif option == 2
-        set_mood
-        
-        elsif option == 3
-        puts "this would delete the user"
-       
-        else
-        puts "please select a valid number"
-            end
-
-        end 
-    end 
-
     def random_movies 
         puts "Here's a list of movies based on your mood"
         @current_user.all_movies
@@ -136,9 +143,12 @@ class App
     end 
 
 
-    # def delete_user 
-        
-    # end 
+    def delete_user 
+        User.delete(@current_user.id)
+        puts "\n  User has been deleted"
+    end 
+
+  
      
 
 

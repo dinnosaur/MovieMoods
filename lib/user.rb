@@ -15,8 +15,9 @@ class User < ActiveRecord::Base
    
 
    def all_movies
+    #displays all the movies based on the user mood
     num = 1
-    self.mood.movies.each {|movie| puts "#{num}. #{movie.title}"; num +=1;}
+    self.mood.movies.each {|movie| puts "#{num}. #{movie.title} - [Genre:#{movie.genre}]   [Year:#{movie.year}]   Director:[#{movie.director}]"; num +=1;}
    end
 
     def self.all_users
