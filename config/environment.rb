@@ -6,3 +6,5 @@ require_all 'lib'
 
 
 require_all 'lib'
+
+ActiveRecord::Base.logger = nil

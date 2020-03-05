@@ -18,10 +18,10 @@ calm = Mood.create(mood_name:"Calm")
 melancholy = Mood.create(mood_name:"Melancholy")
 
 puts "Users"
-User.create(name:"roni",mood_id:tense.id )
-User.create(name:"ali", mood_id:romantic.id)
-User.create(name:"nick",mood_id:angry.id)
-User.create(name:"skye",mood_id:lonely.id)
+User.create(name:"roni",mood:tense )
+User.create(name:"ali", mood:romantic)
+User.create(name:"nick",mood:angry)
+User.create(name:"skye",mood:lonely)
 
 puts "Movies"
 moon = Movie.create(title:"Moon", genre: "sci-fi", year:2009, director:"Duncan Jones")
@@ -41,15 +41,15 @@ the_prestige = Movie.create(title:"The Prestige", genre: "Mystery", year:2006, d
 
 puts "movie_moods"
 
-MovieMood.create(movie_id:moon.id, mood_id:cheerful.id)
-MovieMood.create(movie_id:marvins_room.id, mood_id:calm.id)
-MovieMood.create(movie_id:quills.id, mood_id:angry.id)
-MovieMood.create(movie_id:quills.id, mood_id:calm.id)
-MovieMood.create(movie_id:the_man_from_earth.id, mood_id:cheerful.id)
-MovieMood.create(movie_id:airport.id, mood_id:lonely.id)
-MovieMood.create(movie_id:airport.id, mood_id:angry.id)
-MovieMood.create(movie_id:airport.id, mood_id:gloomy.id)
-MovieMood.create(movie_id:bernie.id, mood_id:gloomy.id)
+MovieMood.create(movie:moon, mood:cheerful)
+MovieMood.create(movie:marvins_room, mood:calm)
+MovieMood.create(movie:quills, mood:angry)
+MovieMood.create(movie:quills, mood:calm)
+MovieMood.create(movie:the_man_from_earth, mood:cheerful)
+MovieMood.create(movie:airport, mood:lonely)
+MovieMood.create(movie:airport, mood:angry)
+MovieMood.create(movie:airport, mood:gloomy)
+MovieMood.create(movie:bernie, mood:gloomy)
 
 
 

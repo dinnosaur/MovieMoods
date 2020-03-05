@@ -1,17 +1,18 @@
 require_relative '../config/environment'
 
-    cli = App.new
-# current_user 
+   cli = App.new
+
 
 
 
     cli.greet 
     cli.existing_user
-    # cli.set_mood
+    cli.main_menu
+    
 
 
 
-    # name = gets.chomp.to_s
+
 
 
 

@@ -14,15 +14,19 @@ class User < ActiveRecord::Base
    end 
    
 
+   def all_movies
+    num = 1
+    self.mood.movies.each {|movie| puts "#{num}. #{movie.title}"; num +=1;}
+   end
 
     def self.all_users
-        #sdisplays all user stored in the daatabse 
+        #displays all user stored in the daatabse 
         num = 1
-        self.all.each  {|user|puts "#{num}.#{user.name}"; num +=1; }
+        self.all.each  {|user|puts "#{num}. #{user.name}"; num +=1; }
      
     end 
 
-    
+   
 
    
     
