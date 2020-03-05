@@ -4,18 +4,19 @@ class User < ActiveRecord::Base
 
 
    def self.add(name)
+        #adds a user to the databse 
         self.find_or_create_by(name:name)
    end 
 
    def self.find_name(name)
-        self.all.find_by(name:name)
+        #finds a user based on the name given 
+    self.all.find_by(name:name)
    end 
    
-#    def update(mood)
-#     self.find_name.update(mood:mood)
-#     end 
+
 
     def self.all_users
+        #sdisplays all user stored in the daatabse 
         num = 1
         self.all.each  {|user|puts "#{num}.#{user.name}"; num +=1; }
      

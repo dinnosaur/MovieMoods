@@ -6,15 +6,15 @@ class Mood < ActiveRecord::Base
 
 
     def self.all_moods
+        #displays all the mood available to choose from
         num = 1
         self.all.each  {|user|puts "#{num}.#{user.mood_name}"; num +=1; }
      
     end 
 
-    def self.find
-    Mood.find(new_mood)
+   
 
-    end 
+    
 
     
 

@@ -15,6 +15,7 @@ romantic = Mood.create(mood_name:"Romantic")
 mysterious = Mood.create(mood_name:"Mysterious")
 lonely = Mood.create(mood_name:"Lonely")
 calm = Mood.create(mood_name:"Calm")
+melancholy = Mood.create(mood_name:"Melancholy")
 
 puts "Users"
 User.create(name:"roni",mood_id:tense.id )
@@ -32,7 +33,7 @@ bernie = Movie.create(title:"Bernie", genre: "comedy", year:2011, director:"Rich
 jeff_who_lives_at_home = Movie.create(title:"Jeff, Who lives at Home", genre: "comedy", year:2011, director:"Jay Duplas")
 the_kings_speech = Movie.create(title:"The King's Speech", genre: "biography,drama", year:2010, director:"Tom Hooper")
 to_be_or_not_to_be = Movie.create(title:"To Be or Not to Be", genre: "Action", year:1983, director:"Alan Johnson")
-memento = Movie.create(title:"Memento", genre: "Thriller", year:2000, director:"Chrisopher Nolan")
+memento = Movie.create(title:"Memento", genre: "Thriller", year:2000, director:"Christopher Nolan")
 inception = Movie.create(title:"Inception", genre: "Action,Adventure,Sci-Fi", year:2010, director:"Christopher Nolan")
 the_prestige = Movie.create(title:"The Prestige", genre: "Mystery", year:2006, director:"Christopher Nolan")
 
@@ -49,6 +50,7 @@ MovieMood.create(movie_id:airport.id, mood_id:lonely.id)
 MovieMood.create(movie_id:airport.id, mood_id:angry.id)
 MovieMood.create(movie_id:airport.id, mood_id:gloomy.id)
 MovieMood.create(movie_id:bernie.id, mood_id:gloomy.id)
+
 
 
 

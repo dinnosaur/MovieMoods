@@ -23,7 +23,7 @@ class App
             
                 if yesorno == "Y"|| yesorno == "y"
                     #add please select your user
-                   all_users
+                  select_user
                   set_mood
                   @current_user.update_attribute(:mood_id,@current_mood )
                     
@@ -34,6 +34,7 @@ class App
                    @current_user = create_user
                     puts "\nUser Created!"
                      set_mood
+                     
                      @current_user.update_attribute(:mood_id,@current_mood )
                     menu_exit = 1 
                 else 
@@ -44,7 +45,7 @@ class App
     end 
         
         
-    def all_users 
+    def select_user
         puts "\Please Select Your User"
         User.all_users
         get_user_id = gets.chomp.to_i
@@ -60,6 +61,7 @@ class App
         get_mood = gets.chomp.to_i 
          new_mood =  val_mood_input(get_mood)
         @current_mood = new_mood
+        puts "\nYour current mood is set to #{Mood.find(new_mood).mood_name}"
             
     end 
 
@@ -92,8 +94,6 @@ class App
         
         
         
-        # def select_user 
-            
-        # end 
+      
 
 end 
