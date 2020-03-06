@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base 
     belongs_to :mood
+    has_many :favourites
     has_many :movies, through: :favourites
    
 
@@ -14,7 +15,7 @@ class User < ActiveRecord::Base
    end 
    
 
-   def all_movies
+   def all_movies_mood
         #displays all the movies based on the user mood
         num = 1
         self.mood.movies.each {|movie| puts "-----> #{num}. #{movie.title} - [Genre:#{movie.genre}]   [Year:#{movie.year}]   Director:[#{movie.director}]"; num +=1;}
@@ -33,6 +34,12 @@ class User < ActiveRecord::Base
         self.all.each  {|user|puts "-----> #{num}. #{user.name}"; num +=1; }
      
     end 
+
+
+    def movies_from_favourites
+      #displays all the movies from the users favourite list
+      self.each {|movie| puts "-----> #{num}. #{movie.title} - [Genre:#{movie.genre}]   [Year:#{movie.year}]   Director:[#{movie.director}]"; num +=1;}
+    end
 
    
 

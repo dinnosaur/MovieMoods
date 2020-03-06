@@ -8,12 +8,12 @@ class App
     end 
 
     def options 
-        puts "\n               Main menu ---- Please enter a number from [1] to [5] "
+        puts "\n               Main menu - (Please enter a number from [1] to [5]) "
         puts "-----> 1. Show movie suggestions based on your mood"
         puts "-----> 2. Change you current mood"
         puts "-----> 3. Delete your profile and exit"
-        puts "-----> 4. Exit"
-        puts "-----> 5. See your current favourites"
+        puts "-----> 4. See your current favourites"
+        puts "-----> 5. Exit"
     end 
         
     def create_user 
@@ -69,7 +69,9 @@ class App
             elsif option == 3
                 delete_user
                 exit_val = 1
-            elsif option == 4
+
+            elsif option ==4
+            elsif option == 5
                 exit_val = 1
             else
                 puts "please select a valid number"
@@ -89,7 +91,7 @@ class App
         
         
     def set_mood 
-        puts "\n    What is your current mood"
+        puts "\n    How are you feeling right now ? (Please enter a number from [1] - [9]"
         Mood.all_moods
         get_mood = gets.chomp.to_i 
          new_mood =  val_mood_input(get_mood)
@@ -122,7 +124,7 @@ class App
      end 
 
      def val_main_menu(num)
-        while num <= 0 || num > 4 do 
+        while num <= 0 || num > 5 do 
             puts "   Please enter a valid number"
                 num= gets.chomp.to_i 
         end 
