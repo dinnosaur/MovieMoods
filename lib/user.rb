@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base 
     belongs_to :mood
-    # belongs_to :movie_mood, through:moods
-
+    has_many :movies, through: :favourites
+   
 
    def self.add(name)
         #adds a user to the databse 
@@ -10,20 +10,27 @@ class User < ActiveRecord::Base
 
    def self.find_name(name)
         #finds a user based on the name given 
-    self.all.find_by(name:name)
+         self.all.find_by(name:name)
    end 
    
 
    def all_movies
-    #displays all the movies based on the user mood
-    num = 1
-    self.mood.movies.each {|movie| puts "#{num}. #{movie.title} - [Genre:#{movie.genre}]   [Year:#{movie.year}]   Director:[#{movie.director}]"; num +=1;}
-   end
+        #displays all the movies based on the user mood
+        num = 1
+        self.mood.movies.each {|movie| puts "-----> #{num}. #{movie.title} - [Genre:#{movie.genre}]   [Year:#{movie.year}]   Director:[#{movie.director}]"; num +=1;}
+    end
+
+    def movie_key
+        self.mood.movies.map do |movie| movie.id    
+        end
+    end
+
+ 
 
     def self.all_users
         #displays all user stored in the daatabse 
         num = 1
-        self.all.each  {|user|puts "#{num}. #{user.name}"; num +=1; }
+        self.all.each  {|user|puts "-----> #{num}. #{user.name}"; num +=1; }
      
     end 
 

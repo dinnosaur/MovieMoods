@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_202337) do
+ActiveRecord::Schema.define(version: 2020_03_05_171418) do
+
+  create_table "favourites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "movie_id"
+  end
 
   create_table "moods", force: :cascade do |t|
     t.string "mood_name"
