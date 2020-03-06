@@ -8,12 +8,12 @@ class App
     end 
 
     def options 
-        puts "\n               Main menu - (Please enter a number from [1] to [5]) "
-        puts "-----> 1. Show Movie suggestions based on your current Mood"
-        puts "-----> 2. Change you current Mood"
-        puts "-----> 3. Delete your profile and exit"
-        puts "-----> 4. See a list of your current Favourites"
-        puts "-----> 5. Exit"
+        puts "\n              MAIN MENU - (Please enter a number from [1] to [5])\n "
+        puts "\n-----> 1. Show Movie suggestions based on your current Mood"
+        puts "\n-----> 2. Change you current Mood"
+        puts "\n-----> 3. Delete your profile and exit"
+        puts "\n-----> 4. See a list of your current Favourites"
+        puts "\n-----> 5. Exit"
     end 
         
     
@@ -88,7 +88,7 @@ class App
     end 
         
     def select_user
-        puts "\n     Enter a number that is indicated by the arrow to select your profile"
+        puts "\n     Enter a number that is indicated by the arrow to select your profile\n"
         User.all_users
         get_user_id = gets.chomp.to_i
         new_user = val_user_input(get_user_id)
@@ -98,7 +98,7 @@ class App
         
         
     def set_mood 
-        puts "\n       How are you feeling right now ? (Please enter a number from [1] - [9]"
+        puts "\n       How are you feeling right now ? (Please enter a number from [1] - [9]\n"
         Mood.all_moods
         get_mood = gets.chomp.to_i 
          new_mood =  val_mood_input(get_mood)
@@ -142,7 +142,7 @@ class App
 
 
     def random_movies 
-        puts "\n      Here's a list of movies based on your mood"
+        puts "\n      Here's a list of movies based on your mood\n"
        @current_user.all_movies_mood
        add_movies
     end 
@@ -150,11 +150,11 @@ class App
 
     def delete_user 
         User.delete(@current_user.id)
-        puts "\n  User has been deleted"
+        puts "\n  USER HAS BEEN DELETED"
     end 
 
     def add_movies
-        puts "\n  Enter a number to add a Movie to your favourites or enter the [e] key to return to the main menu"
+        puts "\n  Enter a number to add a Movie to your favourites or enter the [e] key to return to the main menu\n"
         exit_out = 0 
         array = @current_user.movie_key
             
@@ -164,12 +164,12 @@ class App
                 break
             end
                 while num <= 0 || num > array.length do 
-                    puts "     Please enter a valid number"
-                    num= gets.chomp.to_i 
+                puts "     Please enter a valid number"
+                num= gets.chomp.to_i 
                 end 
-                    val = Movie.find(array[num-1])
-                    Favourite.add(@current_user,val)
-                    puts "   Add another Movie or go to Main Menu by pressing the [e] key"
+            val = Movie.find(array[num-1])
+            Favourite.add(@current_user,val)
+            puts "   Add another Movie or go to Main Menu by pressing the [e] key"
         end
     end 
      

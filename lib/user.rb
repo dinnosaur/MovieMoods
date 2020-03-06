@@ -18,10 +18,11 @@ class User < ActiveRecord::Base
    def all_movies_mood
         #displays all the movies based on the user mood
         num = 1
-        self.mood.movies.each {|movie| puts "-----> #{num}. #{movie.title} - [Genre:#{movie.genre}]   [Year:#{movie.year}]   Director:[#{movie.director}]"; num +=1;}
+        self.mood.movies.each {|movie| puts "\n-----> #{num}. #{movie.title} - [Genre:#{movie.genre}]   [Year:#{movie.year}]   Director:[#{movie.director}]"; num +=1;}
     end
 
     def movie_key
+        #grabs all the keys of the movies 
         self.mood.movies.map do |movie| movie.id    
         end
     end
@@ -31,7 +32,7 @@ class User < ActiveRecord::Base
     def self.all_users
         #displays all user stored in the daatabse 
         num = 1
-        self.all.each  {|user|puts "-----> #{num}. #{user.name}"; num +=1; }
+        self.all.each  {|user|puts "\n-----> #{num}. #{user.name}"; num +=1; }
      
     end 
 
@@ -39,7 +40,7 @@ class User < ActiveRecord::Base
     def movies_from_favourites
         #displays all the movies from the users favourite list
         num = 1
-        self.movies.each {|movie| puts "------------> #{num}. #{movie.title} - [Genre:#{movie.genre}]   [Year:#{movie.year}]   Director:[#{movie.director}]"; num +=1;}
+        self.movies.each {|movie| puts "\n------------> #{num}. #{movie.title} - [Genre:#{movie.genre}]   [Year:#{movie.year}]   Director:[#{movie.director}]"; num +=1;}
       end
   
 

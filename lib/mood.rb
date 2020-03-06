@@ -8,7 +8,7 @@ class Mood < ActiveRecord::Base
     def self.all_moods
         #displays all the moods
         num = 1
-        self.all.each  {|user|puts "-----> #{num}.#{user.mood_name}"; num +=1; }
+        self.all.each  {|user|puts "\n-----> #{num}. #{user.mood_name}"; num +=1; }
      end 
 
    
