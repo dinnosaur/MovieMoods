@@ -16,12 +16,7 @@ class App
         puts "-----> 5. Exit"
     end 
         
-    def create_user 
-        puts "What is your Name\n"
-        get_name = gets.chomp.to_s
-        User.add(get_name)
-    end 
-        
+    
         
     def existing_user 
            
@@ -34,7 +29,7 @@ class App
                 #add please select your user
                 select_user
                 set_mood
-                  
+                
                 
                 @current_user.update_attribute(:mood, @current_mood)
                 menu_exit = 1
@@ -53,6 +48,7 @@ class App
             
             end
         end 
+               
     end 
 
     def main_menu
@@ -69,8 +65,10 @@ class App
             elsif option == 3
                 delete_user
                 exit_val = 1
-
             elsif option ==4
+                puts "Here is a list of movies from your favourites list"
+                @current_user.movies_from_favourites
+
             elsif option == 5
                 exit_val = 1
             else
@@ -79,9 +77,15 @@ class App
         end 
     end 
         
+
+    def create_user 
+        puts "What is your Name\n"
+        get_name = gets.chomp.to_s
+        User.add(get_name)
+    end 
         
     def select_user
-        puts "\n    Please Select Your User"
+        puts "\n     Enter a number that is indicated by the arrow to select your user"
         User.all_users
         get_user_id = gets.chomp.to_i
         new_user = val_user_input(get_user_id)
@@ -134,12 +138,9 @@ class App
 
 
 
-
-     
-
     def random_movies 
         puts "\nHere's a list of movies based on your mood"
-       @current_user.all_movies
+       @current_user.all_movies_mood
        add_movies
     end 
 
@@ -152,25 +153,23 @@ class App
     def add_movies
         puts "\n  Enter a number to add that movie to your favourites or enter the [e] key to return to the main menu"
         exit_out = 0 
-             array = @current_user.movie_key
+        array = @current_user.movie_key
             
-                while exit_out == 0 do
-                    num = gets.chomp.to_i
+        while exit_out == 0 do
+            num = gets.chomp.to_i
             if num == 0
                 break
             end
-                        while num <= 0 || num > array.length do 
-                            puts "     Please enter a valid number"
-                            num= gets.chomp.to_i 
-                        end 
-                        val = Movie.find(array[num-1])
+                while num <= 0 || num > array.length do 
+                    puts "     Please enter a valid number"
+                    num= gets.chomp.to_i 
+                end 
+                    val = Movie.find(array[num-1])
                     Favourite.add(@current_user,val)
                     puts "   Add another Movie or go to Main Menu by pressing the [e] key"
-                end
+        end
     end 
      
 
-
-         
 
 end 

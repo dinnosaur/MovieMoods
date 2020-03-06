@@ -37,11 +37,11 @@ class User < ActiveRecord::Base
 
 
     def movies_from_favourites
-      #displays all the movies from the users favourite list
-      self.each {|movie| puts "-----> #{num}. #{movie.title} - [Genre:#{movie.genre}]   [Year:#{movie.year}]   Director:[#{movie.director}]"; num +=1;}
-    end
-
-   
+        #displays all the movies from the users favourite list
+        num = 1
+        self.movies.each {|movie| puts "-----> #{num}. #{movie.title} - [Genre:#{movie.genre}]   [Year:#{movie.year}]   Director:[#{movie.director}]"; num +=1;}
+      end
+  
 
    
     
