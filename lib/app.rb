@@ -3,16 +3,16 @@ class App
     attr_accessor :current_user, :current_mood
     
     def greet
-        puts "\n              Welcome to Movie Moods\n"
+        puts "\n              WELCOME TO MOVIE MOODS\n"
         puts "\n         Are you an existing user (Y/N) ?"
     end 
 
     def options 
         puts "\n               Main menu - (Please enter a number from [1] to [5]) "
-        puts "-----> 1. Show movie suggestions based on your mood"
-        puts "-----> 2. Change you current mood"
+        puts "-----> 1. Show Movie suggestions based on your current Mood"
+        puts "-----> 2. Change you current Mood"
         puts "-----> 3. Delete your profile and exit"
-        puts "-----> 4. See your current favourites"
+        puts "-----> 4. See a list of your current Favourites"
         puts "-----> 5. Exit"
     end 
         
@@ -66,9 +66,12 @@ class App
                 delete_user
                 exit_val = 1
             elsif option ==4
-                puts "Here is a list of movies from your favourites list"
-                @current_user.movies_from_favourites
-
+                puts "       \n                   Here is a list of Movies in your Favourites"
+                if @current_user.movies.empty?
+                    puts " You have no Movies in your favourites"
+                else   
+                    @current_user.movies_from_favourites
+                end 
             elsif option == 5
                 exit_val = 1
             else
@@ -85,7 +88,7 @@ class App
     end 
         
     def select_user
-        puts "\n     Enter a number that is indicated by the arrow to select your user"
+        puts "\n     Enter a number that is indicated by the arrow to select your profile"
         User.all_users
         get_user_id = gets.chomp.to_i
         new_user = val_user_input(get_user_id)
@@ -95,14 +98,14 @@ class App
         
         
     def set_mood 
-        puts "\n    How are you feeling right now ? (Please enter a number from [1] - [9]"
+        puts "\n       How are you feeling right now ? (Please enter a number from [1] - [9]"
         Mood.all_moods
         get_mood = gets.chomp.to_i 
          new_mood =  val_mood_input(get_mood)
         @current_mood = Mood.find(new_mood)
         
         
-        puts "\nYour current mood is set to #{Mood.find(new_mood).mood_name}"
+        puts "\n    Your current mood is set to #{Mood.find(new_mood).mood_name}"
             
     end 
 
@@ -139,7 +142,7 @@ class App
 
 
     def random_movies 
-        puts "\nHere's a list of movies based on your mood"
+        puts "\n      Here's a list of movies based on your mood"
        @current_user.all_movies_mood
        add_movies
     end 
@@ -151,7 +154,7 @@ class App
     end 
 
     def add_movies
-        puts "\n  Enter a number to add that movie to your favourites or enter the [e] key to return to the main menu"
+        puts "\n  Enter a number to add a Movie to your favourites or enter the [e] key to return to the main menu"
         exit_out = 0 
         array = @current_user.movie_key
             
