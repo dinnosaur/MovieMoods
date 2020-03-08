@@ -53,6 +53,7 @@ class App
 
     def main_menu
         exit_val = 0 
+        valu = 0
         while exit_val == 0 do  
             options
             num= gets.chomp.to_i
@@ -68,9 +69,12 @@ class App
             elsif option ==4
                 puts "       \n                   Here is a list of Movies in your Favourites"
                 if @current_user.movies.empty?
-                    puts " You have no Movies in your favourites"
+                    puts " \n You have no Movies in your favourites"
                 else   
+                    @current_user = User.find(@new_user)
                     @current_user.movies_from_favourites
+                   binding.pry
+                   puts "you working #{valu +=1}?"
                 end 
             elsif option == 5
                 exit_val = 1
@@ -78,6 +82,7 @@ class App
                 puts "please select a valid number"
             end
         end 
+    
     end 
         
 
@@ -91,9 +96,9 @@ class App
         puts "\n     Enter a number that is indicated by the arrow to select your profile\n"
         User.all_users
         get_user_id = gets.chomp.to_i
-        new_user = val_user_input(get_user_id)
-       @current_user =  User.find(new_user)
-       puts "\n                 You have selected #{@current_user.name}!"
+        @new_user = val_user_input(get_user_id)
+        @current_user =  User.find(@new_user)
+        puts "\n                 You have selected #{@current_user.name}!"
     end 
         
         
@@ -101,7 +106,7 @@ class App
         puts "\n       How are you feeling right now ? (Please enter a number from [1] - [9]\n"
         Mood.all_moods
         get_mood = gets.chomp.to_i 
-         new_mood =  val_mood_input(get_mood)
+        new_mood =  val_mood_input(get_mood)
         @current_mood = Mood.find(new_mood)
         
         
@@ -149,7 +154,7 @@ class App
 
 
     def delete_user 
-        User.delete(@current_user.id)
+        User.destroy(@current_user.id)
         puts "\n  USER HAS BEEN DELETED"
     end 
 
@@ -167,9 +172,10 @@ class App
                 puts "     Please enter a valid number"
                 num= gets.chomp.to_i 
                 end 
-            val = Movie.find(array[num-1])
-            Favourite.add(@current_user,val)
-            puts "   Add another Movie or go to Main Menu by pressing the [e] key"
+            movie= Movie.find(array[num-1])
+            Favourite.add(@current_user,movie)
+            
+            puts "   \n           Add another Movie or go to Main Menu by pressing the [e] key"
         end
     end 
      
