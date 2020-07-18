@@ -71,10 +71,10 @@ class App
                 if @current_user.movies.empty?
                     puts " \n You have no Movies in your favourites"
                 else   
-                    @current_user = User.find(@new_user)
+                    
                     @current_user.movies_from_favourites
                    binding.pry
-                   puts "you working #{valu +=1}?"
+                  
                 end 
             elsif option == 5
                 exit_val = 1
@@ -96,8 +96,8 @@ class App
         puts "\n     Enter a number that is indicated by the arrow to select your profile\n"
         User.all_users
         get_user_id = gets.chomp.to_i
-        @new_user = val_user_input(get_user_id)
-        @current_user =  User.find(@new_user)
+        new_user = val_user_input(get_user_id)
+        @current_user =  User.find(new_user)
         puts "\n                 You have selected #{@current_user.name}!"
     end 
         
@@ -140,8 +140,8 @@ class App
             puts "   Please enter a valid number"
                 num= gets.chomp.to_i 
         end 
-       num
-
+        
+        return num
      end 
 
 
@@ -155,6 +155,7 @@ class App
 
     def delete_user 
         User.destroy(@current_user.id)
+        ActiveRecord::Base.connection.execute("ALTER TABLE `users` AUTO_INCREMENT = 4;")
         puts "\n  USER HAS BEEN DELETED"
     end 
 

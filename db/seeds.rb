@@ -91,7 +91,4 @@ puts "movie_moods"
 # MovieMood.create(movie:bernie, mood:gloomy)
 
 
-
-
-
 puts 'finished seeding'
