@@ -40,7 +40,7 @@ how_to_train_your_dragon = Movie.create(title:"How to Train Your Dragon", genre:
 alladin = Movie.create(title:"Aladdin", genre: "Fantasy", year:2014, director:"Guy Ritchie")
  Movie.create(title:"Eyes Wide Shut", genre: "Mystery,Thriller", year:1999, director:"Stanley Kubrick")
  Movie.create(title:"A Clockwork Orange", genre: "Drama,Sci-FI", year:1971, director:"Stanley Kubrick")
- Movie.create(title:"The Shining", genre: "Drama,Horro", year:1980, director:"Stanley Kubrick")
+ Movie.create(title:"The Shining", genre: "Drama,Horror", year:1980, director:"Stanley Kubrick")
  Movie.create(title:"2001: A Space Odyssey", genre: "Adventure, Sci-Fi", year:1968, director:"Stanley Kubrick")
  Movie.create(title:"Full Metal Jacket", genre: "Drama", year:1987, director:"Stanley Kubrick")
  Movie.create(title:"A Star is Born", genre: "Romance", year:2018, director:"Bradley Cooper")

@@ -108,10 +108,8 @@ class App
         get_mood = gets.chomp.to_i 
         new_mood =  val_mood_input(get_mood)
         @current_mood = Mood.find(new_mood)
-        
-        
+
         puts "\n    Your current mood is set to #{Mood.find(new_mood).mood_name}"
-            
     end 
 
 
@@ -122,7 +120,6 @@ class App
 
         end 
            get_mood 
-
     end 
 
 
@@ -132,7 +129,6 @@ class App
             get_user = gets.chomp.to_i 
         end 
         get_user 
-
      end 
 
      def val_main_menu(num)
@@ -140,16 +136,15 @@ class App
             puts "   Please enter a valid number"
                 num= gets.chomp.to_i 
         end 
-        
-        return num
+         num
      end 
 
 
 
     def random_movies 
         puts "\n      Here's a list of movies based on your mood\n"
-       @current_user.all_movies_mood
-       add_movies
+        @current_user.all_movies_mood
+        add_movies
     end 
 
 
@@ -175,7 +170,6 @@ class App
                 end 
             movie= Movie.find(array[num-1])
             Favourite.add(@current_user,movie)
-            
             puts "   \n           Add another Movie or go to Main Menu by pressing the [e] key"
         end
     end 
